@@ -2,7 +2,6 @@ from algosdk.v2client.algod import AlgodClient
 from algosdk import atomic_transaction_composer
 from algosdk.v2client.models import simulate_request
 from algosdk.transaction import AssetCreateTxn, AssetTransferTxn
-from algosdk.util import microalgos_to_algos
 from dotenv import load_dotenv
 import os
 
