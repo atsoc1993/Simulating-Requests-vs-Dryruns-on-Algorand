@@ -1,0 +1,20 @@
+{
+  "name": "Testing",
+  "methods": [
+    {
+      "name": "print_ten",
+      "args": [],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "call_and_zero_pay",
+      "args": [],
+      "returns": {
+        "type": "void"
+      }
+    }
+  ],
+  "networks": {}
+}

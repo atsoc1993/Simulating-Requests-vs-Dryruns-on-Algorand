@@ -1,0 +1,125 @@
+#pragma version 8
+txn NumAppArgs
+int 0
+==
+bnz main_l6
+txna ApplicationArgs 0
+method "print_ten()void"
+==
+bnz main_l5
+txna ApplicationArgs 0
+method "call_and_zero_pay()void"
+==
+bnz main_l4
+err
+main_l4:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub callandzeropaycaster_3
+int 1
+return
+main_l5:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub printtencaster_2
+int 1
+return
+main_l6:
+txn OnCompletion
+int NoOp
+==
+bnz main_l12
+txn OnCompletion
+int OptIn
+==
+bnz main_l11
+txn OnCompletion
+int CloseOut
+==
+bnz main_l10
+err
+main_l10:
+txn ApplicationID
+int 0
+!=
+assert
+int 1
+return
+main_l11:
+txn ApplicationID
+int 0
+!=
+assert
+int 1
+return
+main_l12:
+txn ApplicationID
+int 0
+==
+assert
+int 1
+return
+
+// print_ten
+printten_0:
+proto 0 0
+int 10
+itob
+log
+retsub
+
+// call_and_zero_pay
+callandzeropay_1:
+proto 0 0
+gtxn 0 TypeEnum
+int appl
+==
+assert
+gtxn 0 Sender
+addr ZNOS2OA62XTLQRNOD4GKDHA4V4QTNHQEEY7YDDVJRINGAGAOZZDSSFHVME
+==
+assert
+gtxna 0 ApplicationArgs 1
+byte "TESTING"
+==
+assert
+gtxn 0 Note
+byte "TESTINGNOTE"
+==
+assert
+gtxn 1 TypeEnum
+int pay
+==
+assert
+gtxn 1 Amount
+int 0
+==
+assert
+gtxn 1 Amount
+itob
+log
+retsub
+
+// print_ten_caster
+printtencaster_2:
+proto 0 0
+callsub printten_0
+retsub
+
+// call_and_zero_pay_caster
+callandzeropaycaster_3:
+proto 0 0
+callsub callandzeropay_1
+retsub
