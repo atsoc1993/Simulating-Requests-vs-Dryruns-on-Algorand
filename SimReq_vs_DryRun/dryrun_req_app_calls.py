@@ -1,6 +1,6 @@
 from algosdk.v2client.algod import AlgodClient
 from algosdk.v2client.models import DryrunRequest, DryrunSource, Application, ApplicationParams
-from algosdk.transaction import ApplicationCallTxn, PaymentTxn, OnComplete, assign_group_id
+from algosdk.transaction import ApplicationCallTxn, PaymentTxn, OnComplete
 import os
 import base64
 
