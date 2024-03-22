@@ -55,5 +55,5 @@ request = DryrunRequest(
 )
 
 dryrun_response = algod_client.dryrun(request)
-print(dryrun_response)
+#print(dryrun_response)
 print(int.from_bytes(base64.b64decode(dryrun_response['txns'][0]['logs'][0]), 'big'))
