@@ -14,7 +14,7 @@ account_address = os.getenv('ADDRESS')
 with open('dryrun/artifacts/approval.teal', 'r') as f:
     approval_teal_source = f.read()
 
-app_id = 123
+app_id = 123 #Can be any arbitrary number
 approval_result = algod_client.compile(approval_teal_source)
 approval_program = base64.b64decode(approval_result['result'])
 
