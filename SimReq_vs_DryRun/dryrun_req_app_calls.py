@@ -1,8 +1,11 @@
 from algosdk.v2client.algod import AlgodClient
 from algosdk.v2client.models import DryrunRequest, DryrunSource, Application, ApplicationParams
 from algosdk.transaction import ApplicationCallTxn, PaymentTxn, OnComplete
+from dotenv import load_dotenv()
 import os
 import base64
+
+load_dotenv()
 
 algod_token = os.getenv('NODE_TOKEN')
 algod_port = os.getenv('NODE_PORT')
