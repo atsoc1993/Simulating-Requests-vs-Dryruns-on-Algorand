@@ -58,7 +58,7 @@ APP ID OBTAINED
 
 simres = atc.simulate(algod_client, simreq)
 response = simres.simulate_response
-asset_id = response['txn-groups'][0]['txn-results'][0]['txn-result']['application-index']
+app_id = response['txn-groups'][0]['txn-results'][0]['txn-result']['application-index']
 method_call = 0x979d1f8b.to_bytes(4, 'big') 
 testing_arg = "TESTING".encode()
 note = "TESTINGNOTE"
@@ -76,7 +76,7 @@ app_create_txn = ApplicationCreateTxn(
 app_call_txn = ApplicationCallTxn(
     sender=account_address,
     sp=params,
-    index=asset_id,
+    index=app_id,
     app_args=[method_call, testing_arg],
     on_complete=OnComplete.NoOpOC,
     note = "TESTINGNOTE",
